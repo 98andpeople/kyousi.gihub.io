@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>音频播放器</title>
+	<meta charset="utf-8">
+	<style>
+		/* 播放器样式 */
+		audio {
+			width: 100%;
+			margin: 20px 0;
+		}
+		input[type="range"] {
+			width: 100%;
+			margin: 10px 0;
+		}
+		
+	</style>
+<link rel="stylesheet" type="text/css" href="Untitled-1.css">
+</head>
+<body>
+	<div id="zg">
+		<h1>课文跟读</h1>
+	
+		<!-- 音频列表 -->
+		<select id="audioList">
+			<option value="新编上-课文-第1课 听力音频.mp3" >第1章</option>
+			<option value="新编上-课文-第2课 听力音频.mp3">第2章</option>
+			<option value="新编上-课文-第3课 听力音频.mp3">第3章</option>
+			<option value="新编上-课文-第4课 听力音频.mp3" >第4章</option>
+			<option value="新编上-课文-第5课 听力音频.mp3">第5章</option>
+			<option value="新编上-课文-第6课 听力音频.mp3">第6章</option>
+			<option value="新编上-课文-第7课 听力音频.mp3" >第7章</option>
+			<option value="新编上-课文-第8课 听力音频.mp3">第8章</option>
+			<option value="新编上-课文-第9课 听力音频.mp3">第9章</option>
+			<option value="新编上-课文-第10课 听力音频.mp3" >第10章</option>
+			<option value="新编上-课文-第11课 听力音频.mp3">第11章</option>
+			<option value="新编上-课文-第12课 听力音频.mp3">第12章</option>
+			<option value="新编上-课文-第13课 听力音频.mp3" >第13章</option>
+			<option value="新编上-课文-第14课 听力音频.mp3">第14章</option>
+			<option value="新编上-课文-第15课 听力音频.mp3">第15章</option>
+			<option value="新编上-课文-第16课 听力音频.mp3" >第16章</option>
+			<option value="新编上-课文-第17课 听力音频.mp3">第17章</option>
+			<option value="新编上-课文-第18课 听力音频.mp3">第18章</option>
+			<option value="新编上-课文-第19课 听力音频.mp3" >第19章</option>
+			<option value="新编上-课文-第20课 听力音频.mp3">第20章</option>
+			<option value="新编上-课文-第21课 听力音频.mp3">第21章</option>
+			<option value="新编上-课文-第22课 听力音频.mp3" >第22章</option>
+			<option value="新编上-课文-第23课 听力音频.mp3">第23章</option>
+			<option value="新编上-课文-第24课 听力音频.mp3">第24章</option>
+		</select>
+		
+		<!-- 播放器 -->
+		<audio id="audioPlayer" controls>
+			<source src="新编上-课文-第1课 听力音频.mp3" type="audio/mpeg">
+			<source src="新编上-课文-第2课 听力音频.mp3" type="audio/mpeg">
+			<source src="新编上-课文-第3课 听力音频.mp3" type="audio/mpeg">
+			<source src="新编上-课文-第4课 听力音频.mp3" type="audio/mpeg">
+			<source src="新编上-课文-第5课 听力音频.mp3" type="audio/mpeg">
+			<source src="新编上-课文-第6课 听力音频.mp3" type="audio/mpeg">
+			<source src="新编上-课文-第7课 听力音频.mp3" type="audio/mpeg">
+			<source src="新编上-课文-第8课 听力音频.mp3" type="audio/mpeg">
+			<source src="新编上-课文-第9课 听力音频.mp3" type="audio/mpeg">
+			<source src="新编上-课文-第10课 听力音频.mp3" type="audio/mpeg">
+			<source src="新编上-课文-第11课 听力音频.mp3" type="audio/mpeg">
+			<source src="新编上-课文-第12课 听力音频.mp3" type="audio/mpeg">
+			<source src="新编上-课文-第13课 听力音频.mp3" type="audio/mpeg">
+			<source src="新编上-课文-第14课 听力音频.mp3" type="audio/mpeg">
+			<source src="新编上-课文-第15课 听力音频.mp3" type="audio/mpeg">
+			<source src="新编上-课文-第16课 听力音频.mp3" type="audio/mpeg">
+			<source src="新编上-课文-第17课 听力音频.mp3" type="audio/mpeg">
+			<source src="新编上-课文-第18课 听力音频.mp3" type="audio/mpeg">
+			<source src="新编上-课文-第19课 听力音频.mp3" type="audio/mpeg">
+			<source src="新编上-课文-第20课 听力音频.mp3" type="audio/mpeg">
+			<source src="新编上-课文-第21课 听力音频.mp3" type="audio/mpeg">
+			<source src="新编上-课文-第22课 听力音频.mp3" type="audio/mpeg">
+			<source src="新编上-课文-第23课 听力音频.mp3" type="audio/mpeg">
+			<source src="新编上-课文-第24课 听力音频.mp3" type="audio/mpeg">
+	
+		</audio>
+		
+		<!-- 进度条 -->
+		<input type="range" id="audioSlider" min="0" max="100" value="0">
+		
+	</div>
+	
+	<script>
+		// 获取元素
+		var audioPlayer = document.getElementById("audioPlayer");
+		var audioList = document.getElementById("audioList");
+		var audioSlider = document.getElementById("audioSlider");
+		
+		// 监听音频列表的变化
+		audioList.addEventListener("change", function() {
+			audioPlayer.src = audioList.value;
+			audioPlayer.play();
+		});
+		
+		// 监听音频播放的变化
+		audioPlayer.addEventListener("timeupdate", function() {
+			audioSlider.value = audioPlayer.currentTime / audioPlayer.duration * 100;
+		});
+		
+		// 监听进度条的变化
+		audioSlider.addEventListener("input", function() {
+			audioPlayer.currentTime = audioSlider.value / 100 * audioPlayer.duration;
+		});
+	</script>
+</body>
+</html>
